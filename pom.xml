@@ -8,5 +8,52 @@
     <artifactId>qa-task</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <properties>
+        <lombok.version>1.16.14</lombok.version>
+        <serenity.version>1.9.16</serenity.version>
+        <selenium.chrome.driver.version>3.12.0</selenium.chrome.driver.version>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <dependencies>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-chrome-driver</artifactId>
+            <version>${selenium.chrome.driver.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>3.12.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>RELEASE</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <!--<dependency>-->
+        <!--<groupId>net.serenity-bdd</groupId>-->
+        <!--<artifactId>serenity-core</artifactId>-->
+        <!--<version>${serenity.version}</version>-->
+        <!--</dependency>-->
+    </dependencies>
 
 </project>
