@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 import static core.utils.WebDriverUtil.setDefaultImplicitlyTimeout;
 import static core.utils.WebDriverUtil.setImplicitlyTimeout;
 
-public abstract class CommonWidget {
+public abstract class CommonWidget implements ICommonWidget {
 
     protected WebElement root;
 

@@ -1,15 +1,15 @@
 package steps;
 
-import booking.pages.MainBookingPage;
+import booking.pages.SearchResultsPage;
 
 import static core.utils.WaitUtils.waitForJQueryLoad;
 
 public class SearchResultSteps extends CommonSteps {
 
-    private MainBookingPage mainBookingPage = new MainBookingPage(driver);
+    private SearchResultsPage searchResultsPage = new SearchResultsPage(driver);
 
     public void clickNextButton() {
-        mainBookingPage.getNextPageButton().click();
+        searchResultsPage.getNextPageButton().click();
         waitForJQueryLoad();
     }
 }

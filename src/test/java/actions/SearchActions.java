@@ -13,7 +13,7 @@ public class SearchActions extends HeaderActions {
     }
 
     public void selectCheckinDate(String date) {
-        searchMenuWidgetSteps.clickChekinDateButton();
+        searchMenuWidgetSteps.clickCheckinDateButton();
         searchMenuWidgetSteps.selectCheckinDate(date);
     }
 

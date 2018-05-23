@@ -1,6 +1,7 @@
 package booking.pages;
 
 import booking.pages.common.CommonPage;
+import booking.pages.widgets.ISearchResultItemWidget;
 import booking.pages.widgets.SearchResultItemWidget;
 import lombok.Getter;
 import org.openqa.selenium.WebDriver;
@@ -12,7 +13,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Getter
-public class MainBookingPage extends CommonPage {
+public class SearchResultsPage extends CommonPage {
 
     @FindBy(css = "#hotellist_inner div[class*='sr_item_default']")
     private List<WebElement> searchResultItemsList;
@@ -20,12 +21,12 @@ public class MainBookingPage extends CommonPage {
     @FindBy(className = "paging-next")
     private WebElement nextPageButton;
 
-    public MainBookingPage(WebDriver webDriver) {
+    public SearchResultsPage(WebDriver webDriver) {
         super(webDriver);
         PageFactory.initElements(this.driver, this);
     }
 
-    public List<SearchResultItemWidget> getSearchResultItems() {
+    public List<ISearchResultItemWidget> getSearchResultItems() {
         return getSearchResultItemsList().stream().map(SearchResultItemWidget::new).collect(Collectors.toList());
     }
 

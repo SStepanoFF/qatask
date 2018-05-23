@@ -1,17 +1,17 @@
 package booking.pages.widgets;
 
-import booking.pages.common.CommonPage;
 import lombok.Getter;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
+import static core.utils.WebDriverUtil.getDriver;
+
 @Getter
-public class SearchMenuWidget extends CommonPage {
+public class SearchMenuWidget extends CommonWidget implements ISearchMenuWidget {
 
     @FindBy(id = "ss")
     private WebElement destinationInputField;
@@ -49,9 +49,9 @@ public class SearchMenuWidget extends CommonPage {
     @FindBy(name = "sb_travel_purpose")
     private WebElement travelPurposeCheckBox;
 
-    public SearchMenuWidget(WebDriver webDriver) {
-        super(webDriver);
-        PageFactory.initElements(this.driver, this);
+    public SearchMenuWidget(WebElement webElement) {
+        super(webElement);
+        PageFactory.initElements(getDriver(), this);
     }
 
     public List<WebElement> getCheckinCalendarDates() {

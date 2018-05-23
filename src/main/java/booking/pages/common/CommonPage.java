@@ -1,5 +1,7 @@
 package booking.pages.common;
 
+import booking.pages.widgets.ISearchMenuWidget;
+import booking.pages.widgets.SearchMenuWidget;
 import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -25,9 +27,16 @@ public class CommonPage {
     @FindBy(css = "#current_language_foldout li")
     private List<WebElement> languagesList;
 
+    @FindBy(id = "frm")
+    private WebElement searchForm;
+
     public CommonPage(WebDriver webDriver) {
         this.driver = webDriver;
         PageFactory.initElements(this.driver, this);
+    }
+
+    public ISearchMenuWidget getSearchMenuWidget() {
+        return new SearchMenuWidget(getSearchForm());
     }
 
 }

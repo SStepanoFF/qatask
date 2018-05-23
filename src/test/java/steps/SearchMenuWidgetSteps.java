@@ -1,6 +1,6 @@
 package steps;
 
-import booking.pages.widgets.SearchMenuWidget;
+import booking.pages.common.CommonPage;
 import org.openqa.selenium.NotFoundException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
@@ -12,44 +12,45 @@ import static core.utils.WaitUtils.waitForJQueryLoad;
 
 public class SearchMenuWidgetSteps extends CommonSteps {
 
-    private SearchMenuWidget searchMenuWidget = new SearchMenuWidget(driver);
+    //    private SearchMenuWidget searchMenuWidget = new SearchMenuWidget(driver);
+    private CommonPage commonPage = new CommonPage(driver);
 
     public void setChildrenNumber(String number) {
-        new Select(searchMenuWidget.getGroupChildrenField()).selectByValue(number);
+        new Select(commonPage.getSearchMenuWidget().getGroupChildrenField()).selectByValue(number);
     }
 
     public void setChildrenAges(List<String> ages) {
         for (int i = 0; i < ages.size(); i++) {
-            new Select(searchMenuWidget.getChildrenAgeFields().get(i)).selectByValue(ages.get(i));
+            new Select(commonPage.getSearchMenuWidget().getChildrenAgeFields().get(i)).selectByValue(ages.get(i));
         }
     }
 
     public void setAdultNumber(String number) {
-        new Select(searchMenuWidget.getGroupAdultsField()).selectByValue(number);
+        new Select(commonPage.getSearchMenuWidget().getGroupAdultsField()).selectByValue(number);
     }
 
     public void setRoomsNumber(String number) {
-        new Select(searchMenuWidget.getRoomNumber()).selectByValue(number);
+        new Select(commonPage.getSearchMenuWidget().getRoomNumber()).selectByValue(number);
     }
 
     public void inputDestination(String destination) {
-        searchMenuWidget.getDestinationInputField().sendKeys(destination);
+        commonPage.getSearchMenuWidget().getDestinationInputField().sendKeys(destination);
     }
 
-    public void clickChekinDateButton() {
-        searchMenuWidget.getCheckinPickerButton().click();
+    public void clickCheckinDateButton() {
+        commonPage.getSearchMenuWidget().getCheckinPickerButton().click();
     }
 
     public void selectCheckinDate(String date) {
-        selectDayFromPicker(date, searchMenuWidget.getCheckinCalendarDates());
+        selectDayFromPicker(date, commonPage.getSearchMenuWidget().getCheckinCalendarDates());
     }
 
     public void clickChekoutDateButton() {
-        searchMenuWidget.getCheckoutPickerButton().click();
+        commonPage.getSearchMenuWidget().getCheckoutPickerButton().click();
     }
 
     public void selectCheckoutDate(String date) {
-        selectDayFromPicker(date, searchMenuWidget.getCheckoutCalendarDates());
+        selectDayFromPicker(date, commonPage.getSearchMenuWidget().getCheckoutCalendarDates());
     }
 
     private void selectDayFromPicker(String date, List<WebElement> pickerDates) {
@@ -59,19 +60,19 @@ public class SearchMenuWidgetSteps extends CommonSteps {
     }
 
     public void clickSearchButton() {
-        searchMenuWidget.getSearchButton().click();
+        commonPage.getSearchMenuWidget().getSearchButton().click();
         waitForJQueryLoad();
     }
 
     public void selectTravelPurposeCheckbox() {
-        if (!searchMenuWidget.getTravelPurposeCheckBox().isSelected()) {
-            searchMenuWidget.getTravelPurposeCheckBox().click();
+        if (!commonPage.getSearchMenuWidget().getTravelPurposeCheckBox().isSelected()) {
+            commonPage.getSearchMenuWidget().getTravelPurposeCheckBox().click();
         }
     }
 
     public void clickGuestToggleIfPresent() {
-        if (isElementPresent(searchMenuWidget.getGuestsToggle())) {
-            searchMenuWidget.getGuestsToggle().click();
+        if (isElementPresent(commonPage.getSearchMenuWidget().getGuestsToggle())) {
+            commonPage.getSearchMenuWidget().getGuestsToggle().click();
         }
     }
 

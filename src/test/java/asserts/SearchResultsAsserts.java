@@ -1,6 +1,6 @@
 package asserts;
 
-import booking.pages.widgets.SearchResultItemWidget;
+import booking.pages.widgets.ISearchResultItemWidget;
 import org.testng.Assert;
 import states.SearchResultsStates;
 import steps.SearchResultSteps;
@@ -14,7 +14,7 @@ public class SearchResultsAsserts {
     private SearchResultSteps searchResultSteps = new SearchResultSteps();
 
     public void checkResultContainsItemsWithReviewMarkAndPrice(double reviewMark, double price) {
-        SearchResultItemWidget resultItemWidget = null;
+        ISearchResultItemWidget resultItemWidget = null;
         while (searchResultsStates.isPageNextButtonActive() && Objects.isNull(resultItemWidget)) {
             resultItemWidget = searchResultsStates.getFirstSearchResultItemsByParameters(reviewMark, price);
             if (Objects.isNull(resultItemWidget)) {

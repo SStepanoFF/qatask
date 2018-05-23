@@ -1,18 +1,19 @@
 package states;
 
-import booking.pages.MainBookingPage;
-import booking.pages.widgets.SearchResultItemWidget;
+import booking.pages.SearchResultsPage;
+import booking.pages.widgets.ISearchResultItemWidget;
 import steps.HeaderSteps;
 
 import java.util.Objects;
 
 public class SearchResultsStates extends HeaderSteps {
 
-    private MainBookingPage mainBookingPage = new MainBookingPage(driver);
+    private SearchResultsPage searchResultsPage = new SearchResultsPage(driver);
 
-    public SearchResultItemWidget getFirstSearchResultItemsByParameters(double reviewMark, double price) {
-        return mainBookingPage.getSearchResultItems().stream().filter(item -> Objects.nonNull(item.getReviewMarkIfPresent()) &&
-                Double.parseDouble(item.getReviewMarkIfPresent().getText()) >= reviewMark && Objects.nonNull(item.getItemPriceIfPresent()) &&
+    public ISearchResultItemWidget getFirstSearchResultItemsByParameters(double reviewMark, double price) {
+        return searchResultsPage.getSearchResultItems().stream().filter(item -> Objects.nonNull(item.getReviewMarkIfPresent()) &&
+                Double.parseDouble(item.getReviewMarkIfPresent().getText()) >= reviewMark &&
+                Objects.nonNull(item.getItemPriceIfPresent()) &&
                 getItemPrice(item.getItemPriceIfPresent().getText()) <= price).findFirst().orElse(null);
     }
 
@@ -22,6 +23,6 @@ public class SearchResultsStates extends HeaderSteps {
     }
 
     public boolean isPageNextButtonActive() {
-        return mainBookingPage.getNextPageButton().isEnabled();
+        return searchResultsPage.getNextPageButton().isEnabled();
     }
 }

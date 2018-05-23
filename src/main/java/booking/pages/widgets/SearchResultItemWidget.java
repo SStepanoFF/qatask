@@ -1,11 +1,9 @@
 package booking.pages.widgets;
 
-import lombok.Getter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-@Getter
-public class SearchResultItemWidget extends CommonWidget {
+public class SearchResultItemWidget extends CommonWidget implements ISearchResultItemWidget {
 
     public SearchResultItemWidget(WebElement root) {
         super(root);
